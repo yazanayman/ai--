@@ -1,4 +1,97 @@
-<import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np >
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    import numpy as np 
+
+%matplotlib inline
+df_iris = pd.read_csv('iris-data.csv')
+
+
+df_virginica_petal= df_iris[df_iris.iris_class == 'Iris-virginica']
+
+virginica_petal_length=np.array(df_virginica_petal['petal_length_cm'])
+virginica_petal_width=np.array(df_virginica_petal['petal_width_cm'])
+
+def ecdf(data):
+    """Compute ECDF for a one-dimensional array of measurements."""
+
+    # Number of data points: n
+    n = len(data)
+
+    # x-data for the ECDF: x
+    x = np.sort(data)
+
+    # y-data for the ECDF: y
+    y = np.arange(1, n+1) / n
+
+    return x, y
+
+vpetal_mean = np.mean(virginica_petal_length)
+vpetal_median = np.median(virginica_petal_length)
+vpetal_std = np.std(virginica_petal_length)
+x, y = ecdf(virginica_petal_length)
+_=plt.plot(x, y, marker='.', linestyle='none')
+_=plt.plot((vpetal_mean,vpetal_mean),(0.1,0.9), marker='.', color = 'red')
+_=plt.plot((vpetal_median,vpetal_median),(0.1,0.9), marker='_', color = 'black')
+_=plt.plot((0,6),(vpetal_std, vpetal_std), marker='_', color = 'green')
+
+_=plt.xlabel('virginica_petal_length')
+_=plt.ylabel('ECDF')
+plt.show()
+
+
+df_versicolor_petal= df_iris[df_iris.iris_class == 'Iris-versicolor']
+df_versicolor_petal
+versicolor_petal_length=np.array(df_versicolor_petal['petal_length_cm'])
+versicolor_petal_width=np.array(df_versicolor_petal['petal_width_cm'])
+
+
+vpetal_mean = np.mean(versicolor_petal_length)
+vpetal_median = np.median(versicolor_petal_length)
+vpetal_std = np.std(versicolor_petal_length)
+x, y = ecdf(versicolor_petal_length)
+_=plt.plot(x, y, marker='.', linestyle='none')
+_=plt.plot((vpetal_mean,vpetal_mean),(0.1,0.9), marker='.', color = 'red')
+_=plt.plot((vpetal_median,vpetal_median),(0.1,0.9), marker='_', color = 'black')
+_=plt.plot((0,6),(vpetal_std, vpetal_std), marker='_', color = 'green')
+
+_=plt.xlabel('versicolor_petal_length')
+_=plt.ylabel('ECDF')
+plt.show()
+
+
+\df_setosa_petal= df_iris[df_iris.iris_class == 'Iris-setosa']
+df_setosa_petal
+setosa__petal_length=np.array(df_setosa_petal['petal_length_cm'])
+setosa_petal_width=np.array(df_setosa_petal['petal_width_cm'])
+
+
+vpetal_mean = np.mean(setosa__petal_length)
+vpetal_median = np.median(setosa__petal_length)
+vpetal_std = np.std(setosa__petal_length)
+x, y = ecdf(setosa__petal_length)
+_=plt.plot(x, y, marker='.', linestyle='none')
+_=plt.plot((vpetal_mean,vpetal_mean),(0.1,0.9), marker='.', color = 'red')
+_=plt.plot((vpetal_median,vpetal_median),(0.1,0.9), marker='_', color = 'black')
+_=plt.plot((0,6),(vpetal_std, vpetal_std), marker='_', color = 'green')
+
+_=plt.xlabel('setosa__petal_length')
+_=plt.ylabel('ECDF')
+plt.show()
+
+setosa__petal1, setosa__petal2 = ecdf(setosa__petal_length)
+_=plt.plot(setosa__petal1, setosa__petal2 , marker='.', linestyle='none')
+
+virginica_petal1,virginica_petal2 = ecdf(virginica_petal_length)
+_=plt.plot(virginica_petal1,virginica_petal2, marker='.', linestyle='none')
+
+versicolor_petal1 , versicolor_petal2 = ecdf(versicolor_petal_length)
+_=plt.plot(versicolor_petal1 , versicolor_petal2, marker='.', linestyle='none')
+
+# Label the axes
+_ = plt.legend(('setosa', 'verginica', 'versicolor'), loc='lower right')
+_ = plt.xlabel('petal length (cm)')
+_ = plt.ylabel('ECDF')
+
+
+plt.show()
