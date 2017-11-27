@@ -25,3 +25,23 @@
 
 
     if __name__ == '__main__':main()
+
+#more about lsit
+     def world(coun):
+
+world={'Afghanistan': 'Bucharest', 'Caribbean': 'Conakry', 'Cuba': 'Conakry', 'Dominica': 'Conakry', 'Guatemala': 'Conakry', 'Guinea': 'Conakry', 'Malawi': 'Conakry', 'Melanesia': 'Conakry', 'Polynesia': 'Conakry', 'Romania': 'Conakry', 'France': 'Paris', 'Georgia': 'Tbilisi'}
+
+    world['France']='Paris'
+    world['Georgia'] = 'Tbilisi'
+
+   # print( world[coun])
+
+    x={i:world[i] for i in world}
+    print(x)
+
+
+def main():
+    world('Polynesia')
+
+
+if __name__ == '__main__':main()
