@@ -1,0 +1,27 @@
+    def world(coun):
+    country=['Polynesia','Caribbean','Guinea','Melanesia','Afghanistan','Malawi','Cuba','Romania','Dominica','Guatemala']
+    capitals=['Jacques Chirac','Elisabeth II','Conakry','Kabul','Lilongwe','Havana','Bucharest','Roseau','Guatemala City']
+    world={}
+
+    country.sort()
+    capitals.sort()
+
+    j=0
+    for i in country:
+        world[i]=capitals[j]
+        j=+1
+
+    world['France']='Paris'
+    world['Georgia'] = 'Tbilisi'
+
+     print( world[coun])
+
+    x={i:world[i] for i in world}
+    print(x)
+
+
+    def main():
+    world('Polynesia')
+
+
+    if __name__ == '__main__':main()
