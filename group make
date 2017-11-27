@@ -1,0 +1,29 @@
+     def main():
+     # prepare Document
+    word = open('words.txt', 'r') #open file
+    wordlist = word.readlines() # ecah line is an element in list
+    wordclean = [word.strip().lower() for word in wordlist] # strip, lower
+    wordunique = list(set(wordclean)) # remove duplicates
+    wordunique.sort() # sort
+
+    # making groups
+
+    keys = []  # Lengths of words as Keys in Dictionary
+    for word in wordunique:
+    if (len(word) not in keys):
+    keys.append(len(word))
+    dic={}
+    for k in keys:
+    groups=[]
+    for word in wordunique:
+    if(len(word)==k):
+    groups.append(word)
+    dic[k]=groups
+
+    n = int(input("Enter Number of Groups \n"))
+    for i in dic:
+    if(i==n):
+    print(i,"->",dic[i])
+
+
+    if __name__ == '__main__':main()
